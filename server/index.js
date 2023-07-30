@@ -1,16 +1,22 @@
-import express from 'express'
-const app = express()
-import dotenv from 'dotenv'
-import cors from 'cors'
-import mongoose from 'mongoose'
+const express = require("express");
+const app = express();
+require("dotenv").config();
+const mongoose = require("mongoose");
+const cors = require("cors");
+const dotenv = require("dotenv");
+
 
 dotenv.config();
 app.use(cors());
 app.use(express.json());
 
-app.use("/", (req, res)=>{
-    res.send("RankUP")
-})
+// app.use("/", (req, res)=>{
+//     res.send("RankUP")
+// })
+
+const userRoute = require("./routes/UserRoute")
+const postRoute = require("./routes/PostRoute")
+
 
 mongoose
   .connect(process.env.MONGODB_URL)
@@ -20,6 +26,9 @@ mongoose
   .catch((err) => {
     console.log(`Some Problem Occured: ${err}`);
   });
+
+app.use("/api", userRoute);
+app.use("/api", postRoute);
 
 const PORT = 3000
 app.listen(PORT, (req, res)=>{
