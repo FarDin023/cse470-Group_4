@@ -16,7 +16,7 @@ app.use(express.json());
 
 const userRoute = require("./routes/UserRoute")
 const postRoute = require("./routes/PostRoute")
-
+const followerRoute = require("./routes/FollowerRoute");
 
 mongoose
   .connect(process.env.MONGODB_URL)
@@ -29,6 +29,7 @@ mongoose
 
 app.use("/api", userRoute);
 app.use("/api", postRoute);
+app.use("/api", followerRoute);
 
 const PORT = 3000
 app.listen(PORT, (req, res)=>{
