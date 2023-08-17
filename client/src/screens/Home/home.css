@@ -1,0 +1,9 @@
+.home {
+  height: 100vh;
+}
+.component-container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}

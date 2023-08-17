@@ -1,0 +1,62 @@
+import React, { useEffect, useState } from "react";
+import "./profileMainPost.css";
+import ContentPost from "../../components/ContentPost/ContentPost";
+import ProfilePost from "../ProfilePost/ProfilePost";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+
+const ProfileMainPost = () => {
+  const userDetails = useSelector((state) => state.user);
+  let users = userDetails.user;
+  const accesstoken = users.accessToken;
+  const [post, setPost] = useState([]);
+  let location = useLocation();
+  let id = location.pathname.split("/")[2];
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5000/api/get/user-details/${id}`
+        );
+        setUser(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getUser();
+  }, []);
+  useEffect(() => {
+    const getPost = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/get/post/${id}`);
+        setPost(res.data.mypost);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getPost();
+  }, []);
+  return (
+    <div className='mt-4 flex flex-col gap-1'>
+      <div className='w-auto'>
+        <div
+          className='avatar'
+          style={{ marginLeft: "300px", marginTop: "-60px" }}
+        >
+          <div className='w-28 rounded-full'>
+            <img src={`${user.userimage}`} alt='profimage' />
+          </div>
+        </div>
+      </div>
+      {users.user._id === id ? <ContentPost /> : ""}
+
+      {post.map((item) => (
+        <ProfilePost details={item} key={item._id} />
+      ))}
+    </div>
+  );
+};
+
+export default ProfileMainPost;
