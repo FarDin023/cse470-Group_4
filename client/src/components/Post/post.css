@@ -1,0 +1,72 @@
+.sub-post-container {
+  width: 95%;
+  background-color: rgb(218, 238, 184);
+  margin-top: 10px;
+  margin-left: 22px;
+  border-radius: 10px;
+}
+.user-details {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+}
+.username {
+  margin-left: 10px;
+}
+.post-text {
+  text-align: start;
+  width: 90%;
+  margin-left: 10px;
+}
+.post-image {
+  width: 800px;
+  height: 800px;
+  object-fit: contain;
+  margin-left: 20px;
+  margin-top: -130px;
+}
+.reactions {
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+}
+.reaction-icon {
+  width: 50px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.more-vert-icon {
+  width: 30px;
+  margin-left: 600px;
+}
+.reaction-icon-heat {
+  color: orange;
+}
+.first-comment {
+  display: flex;
+  align-items: center;
+}
+.log-in-username {
+  margin-left: 10px;
+}
+.log-in-write-comment {
+  margin-left: 15px;
+  width: 25pc;
+  border: none;
+  height: 4vh;
+}
+.add-comment-btn {
+  margin-left: 10px;
+  color: rgb(227, 30, 30);
+  cursor: pointer;
+}
+.all-comments {
+  display: flex;
+  align-items: center;
+}
+.comment-username {
+  margin-left: 10px;
+}
+.user-comments {
+  margin-left: 10px;
+}
